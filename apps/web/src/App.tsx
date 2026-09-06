@@ -231,7 +231,7 @@ function SiteFooter() {
           </a>
           <span aria-hidden="true">·</span>
           <a
-            href="https://github.com/zhouyang525814-netizen/cdna-display-analyzer"
+            href="https://github.com/ZHOUYANG525814/RoundLens"
             target="_blank"
             rel="noopener noreferrer"
             className="underline-offset-2 transition-colors hover:text-foreground hover:underline"

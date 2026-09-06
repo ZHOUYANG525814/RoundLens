@@ -95,7 +95,7 @@ test("browser Nanopore fault audit exports exact codons, indel QC, rescue and de
 
   await page.goto("/");
   await page.getByRole("button", { name: "Nanopore" }).click();
-  await expect(page.getByRole("heading", { name: "Nanopore Analyzer" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "RoundLens" })).toBeVisible();
   // The banner updates before the lazily loaded tool body. Waiting for this
   // Nanopore-only control prevents uploading the config into the outgoing
   // NGS input during the brief module transition.

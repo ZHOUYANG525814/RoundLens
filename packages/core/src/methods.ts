@@ -69,7 +69,7 @@ export interface MethodsDocument {
 // ============================================================================
 
 export const CDNA_METHODS: MethodsDocument = {
-  toolName: "cDNA-DISPLAY Analyzer",
+  toolName: "RoundLens",
   pseudocount: 0.5,
   pvalueMethod:
     "Two-sided Wald z-test on log2((RPM_destination+p)/(RPM_source+p)), using an Enrich2-style four-term Poisson delta-method SE",
@@ -238,7 +238,7 @@ export const CDNA_METHODS: MethodsDocument = {
 //     tolerate Nanopore's per-base error rate.
 
 export const NANOPORE_METHODS: MethodsDocument = {
-  toolName: "Nanopore SSM Analyzer",
+  toolName: "RoundLens (legacy Nanopore core)",
   pseudocount: 0.5,
   pvalueMethod:
     "Two-sided Wald z-test on the log2 WT-anchored fitness, using a four-term Poisson delta-method SE",
@@ -390,7 +390,7 @@ export const NANOPORE_METHODS: MethodsDocument = {
  * calling and QC semantics differ from the legacy dual-anchor SSM path. */
 export const TARGETED_NANOPORE_METHODS: MethodsDocument = {
   ...NANOPORE_METHODS,
-  toolName: "Targeted Nanopore Analyzer",
+  toolName: "RoundLens (targeted Nanopore)",
   pvalueMethod: "Two-sided Wald z-test on each AA state's RPM+p enrichment, using an Enrich2-style four-term Poisson delta-method SE",
   fdrMethod: "Benjamini-Hochberg per (target, round), plus an independent AA-combination family per round",
   centeringMethod: "Eligible-variant median independently per target or AA-combination family",

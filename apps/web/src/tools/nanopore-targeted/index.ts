@@ -12,7 +12,7 @@ registerWorkerInitializer("nanopore-targeted", initializeTargetedNanoporeWorker)
 
 export const nanoporeTool: Tool = {
   id: "nanopore-targeted",
-  name: "Nanopore Analyzer",
+  name: "RoundLens",
   shortName: "Nanopore",
   description: "Full-amplicon QC and Round 0-normalized enrichment for researcher-defined target codons.",
   icon: ScanLine,

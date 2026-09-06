@@ -357,7 +357,7 @@ export function buildQcReport(outcome: PipelineOutcome, projectName: string): st
   const lines: string[] = [];
   const sep = "=".repeat(85);
   lines.push(sep);
-  lines.push("                cDNA-DISPLAY EXPERIMENT QC & SUMMARY REPORT");
+  lines.push("                RoundLens NGS QC & SUMMARY REPORT");
   lines.push(sep);
   lines.push("");
   lines.push(`Project Name    : ${projectName || "(unnamed)"}`);

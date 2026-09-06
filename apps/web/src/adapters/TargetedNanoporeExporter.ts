@@ -280,7 +280,7 @@ export function buildTargetedQcReport(outcome: TargetedNanoporeOutcome, snapshot
   const total = sum(outcome.roundNames, (r) => outcome.statsByRound[r]!.total_reads);
   const passed = sum(outcome.roundNames, (r) => outcome.statsByRound[r]!.full_qc_passed);
   const lines = [
-    "=".repeat(85), "                TARGETED NANOPORE EXPERIMENT QC & SUMMARY REPORT", "=".repeat(85), "",
+    "=".repeat(85), "                RoundLens TARGETED NANOPORE QC & SUMMARY REPORT", "=".repeat(85), "",
     `Project Name    : ${snapshot.projectName || "(unnamed)"}`, `Generation Time : ${new Date().toISOString()}`, `Total Reads     : ${total.toLocaleString()}`, `Full-QC Reads   : ${passed.toLocaleString()} (${total ? (passed / total * 100).toFixed(2) : "0.00"}%)`, "",
     "--- 1. EXCLUSIVE WHOLE-READ FILTER FUNNEL ---", buildFilterFunnelCsv(outcome).trim(), "",
     "A read receives one primary whole-read drop reason. Overlapping diagnostic failures remain in run_stats.json. Target rescue is reported separately and is never subtracted twice.", "",

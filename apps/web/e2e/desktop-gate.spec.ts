@@ -18,6 +18,6 @@ test("mobile and tablet device signals are blocked before tool modules load", as
 test("a narrow desktop window remains supported", async ({ page }) => {
   await page.setViewportSize({ width: 640, height: 800 });
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "cDNA-DISPLAY Analyzer" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "RoundLens" })).toBeVisible();
   await expect(page.getByText("Desktop browser required")).toHaveCount(0);
 });

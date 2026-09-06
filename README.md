@@ -1,35 +1,25 @@
-# cDNA-DISPLAY Analyzer — browser edition
+# RoundLens
 
-> Browser-native NGS pipeline for cDNA-display / mRNA-display selection rounds.
-> Streams FASTQ from Google Drive, demultiplexes by primer barcode, extracts CDS
-> slices, computes RPM-normalized peptide enrichment with Enrich2-style variance — **all in the user's browser. No upload,
-> no install, no server.**
+Local browser analysis of multi-round peptide enrichment and targeted Nanopore data.
 
-<!-- TODO: add screenshot or GIF here once deployed -->
+RoundLens provides two guided workflows: **NGS** for peptide counts and enrichment across selection rounds, and **Nanopore** for calls at predefined targets and linked states within individual reads. Both use **Inputs → Design → Analyze → Results**, with QC summaries and downloadable results.
 
-## Why this exists
+- Open local FASTQ or FASTQ.gz files and organize them by selection round.
+- Inspect filtering, accepted counts and callable populations alongside enrichment.
+- Export CSV results, QC reports, Methods text and reusable configurations.
+- Process reads locally in a desktop browser using Web Workers and WebAssembly. Optional Google Drive input retrieves user-authorized files.
 
-This is a re-implementation of a desktop Python + customtkinter pipeline I wrote
-for a wet-lab collaborator. The Python version works fine, but:
+[Open the application](https://cdna-display-analyzer-web.vercel.app) · [Source code](https://github.com/ZHOUYANG525814/RoundLens)
 
-- It needs a Python install, a GUI toolkit, and the right OS — friction every
-  time we onboard a new lab member or move to a new machine.
-- Raw NGS data has to be downloaded to disk before analysis (these files are
-  ~200 MB each).
-- Distribution is `pyinstaller` + a Windows `.exe`, which means rebuilds for
-  every change and no easy way to share results-without-data.
+## Supported workflows
 
-The browser edition removes all three. Files stream straight from the user's
-Google Drive into a Web Worker, are processed record-by-record (raw sequence
-data is discarded after counting), and the only thing that hits disk is the
-final CSV — written via a `Blob` download, never uploaded anywhere.
+**NGS:** multiplexed or round-separated short reads are filtered, translated and counted as peptides. The output includes normalized abundance and descriptive enrichment across rounds. Where paired reads need merging, merge them before import.
 
-## What it does
+**Targeted Nanopore:** round-separated long reads are aligned to a reference and evaluated at configured targets. Target and linked-combination outputs retain their respective callable populations. This is a targeted analysis workflow; biological-replicate inference is outside the current scope.
 
-Single-end FASTQ → demultiplex by forward-primer barcode → extract CDS at
-offsets relative to the Fw anchor → filter by mean Phred / frameshift / stop
-codon → aggregate to a peptide enrichment matrix (RPM, stepwise & global
-log2((RPM+p)/(RPM0+p)) enrichment, Enrich2-style variance and FDR).
+## Naming and compatibility
+
+RoundLens was previously named cDNA-DISPLAY Analyzer. The application name now covers both supported workflows. Existing `@cdna/*` workspace imports, saved-project schema identifiers and internal tool IDs are retained so existing configurations and development commands remain compatible. Historical evidence keeps its original names and checksums. The existing application URL remains valid.
 
 ## Architecture
 
@@ -174,7 +164,7 @@ checked in via the build cache.
 ```bash
 pnpm i
 pnpm -r build       # build all packages (incl. WASM via wasm-pack)
-pnpm -r test        # 70 core tests + 7 web tests + 4 parity tests
+pnpm -r test        # run the existing unit and parity suites
 pnpm dev            # http://localhost:5173
 ```
 
@@ -189,7 +179,7 @@ The local-files flow needs no setup.
 
 ## Status
 
-The app exposes cDNA-DISPLAY and one unified Nanopore window. The Nanopore
+RoundLens exposes NGS and targeted Nanopore workflows. The Nanopore
 workflow supports both small-site SSM and multi-codon targeted NNK libraries
 through the full-amplicon core; see its
 [processing contract](./docs/NANOPORE_TARGETED_WEB_MODE.md) and the original

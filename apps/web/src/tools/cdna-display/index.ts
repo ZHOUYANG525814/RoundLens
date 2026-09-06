@@ -17,7 +17,7 @@ registerWorkerInitializer("cdna-display", initializeCdnaWorker);
 
 export const cdnaDisplayTool: Tool = {
   id: "cdna-display",
-  name: "cDNA-DISPLAY Analyzer",
+  name: "RoundLens",
   shortName: "NGS",
   description:
     "Demultiplex + enrichment of cDNA/mRNA-display NGS selection rounds, streamed in-browser.",

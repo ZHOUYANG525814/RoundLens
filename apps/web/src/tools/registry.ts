@@ -8,7 +8,7 @@ import type { ToolRegistration } from "./types";
 export const tools: ReadonlyArray<ToolRegistration> = [
   {
     id: "cdna-display",
-    name: "cDNA-DISPLAY Analyzer",
+    name: "RoundLens",
     shortName: "NGS",
     description:
       "Demultiplex + enrichment of cDNA/mRNA-display NGS selection rounds, streamed in-browser.",
@@ -17,7 +17,7 @@ export const tools: ReadonlyArray<ToolRegistration> = [
   },
   {
     id: "nanopore-targeted",
-    name: "Nanopore Analyzer",
+    name: "RoundLens",
     shortName: "Nanopore",
     description:
       "Full-amplicon QC and Round 0-normalized enrichment for researcher-defined target codons.",

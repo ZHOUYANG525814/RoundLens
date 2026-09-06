@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("tools load independently and publish structured cold-start telemetry", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "cDNA-DISPLAY Analyzer" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "RoundLens" })).toBeVisible();
 
   await expect.poll(async () => page.evaluate(() =>
     (window.__CDNA_TELEMETRY__ ?? []).some((entry) =>
@@ -26,7 +26,7 @@ test("tools load independently and publish structured cold-start telemetry", asy
   expect(afterCdnaWorker.some((name) => name.includes("targeted-nanopore.worker"))).toBeFalsy();
 
   await page.getByRole("button", { name: "Nanopore" }).click();
-  await expect(page.getByRole("heading", { name: "Nanopore Analyzer" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "RoundLens" })).toBeVisible();
   await expect.poll(async () => page.evaluate(() =>
     (window.__CDNA_TELEMETRY__ ?? []).some((entry) =>
       entry.toolId === "nanopore-targeted" && entry.phase === "tool-import" && entry.status === "ok"

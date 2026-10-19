@@ -9,7 +9,7 @@ RoundLens provides two guided workflows: **NGS** for peptide counts and enrichme
 - Export CSV results, QC reports, Methods text and reusable configurations.
 - Process reads locally in a desktop browser using Web Workers and WebAssembly. Optional Google Drive input retrieves user-authorized files.
 
-[Open the application](https://cdna-display-analyzer-web.vercel.app) · [Source code](https://github.com/ZHOUYANG525814/RoundLens)
+[Open the application](https://roundlens-web.vercel.app/) · [Source code](https://github.com/ZHOUYANG525814/RoundLens)
 
 ## Supported workflows
 
